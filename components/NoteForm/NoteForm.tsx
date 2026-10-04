@@ -49,7 +49,7 @@ export default function NoteForm({ onCancel }: NoteFormProps) {
       onSubmit={handleSubmit}
     >
       <Form className={css.form}>
-        <div className={css.fieldGroup}>
+        <div className={css.formGroup}>
           <label htmlFor="title">Title</label>
           <Field id="title" name="title" className={css.input} />
           <ErrorMessage name="title" component="span" className={css.error} />
