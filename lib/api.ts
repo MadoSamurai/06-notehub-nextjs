@@ -7,7 +7,7 @@ const axiosApi = axios.create({
     Authorization: `Bearer ${process.env.NEXT_PUBLIC_NOTEHUB_TOKEN}`,
   },
 });
-
+export const PER_PAGE = 12;
 export interface FetchNotesParams {
   page?: number;
   perPage?: number;
@@ -15,7 +15,7 @@ export interface FetchNotesParams {
 }
 export interface FetchNoteResponse {
   notes: Note[];
-  totalPage: number;
+  totalPages: number;
 }
 export interface CreateNotePayLoad {
   title: string;
@@ -41,6 +41,6 @@ export const createNote = async (payload: CreateNotePayLoad): Promise<Note> => {
 };
 
 export const deleteNote = async (id: string): Promise<Note> => {
-  const { data } = await axiosApi.delete<Note>(`/notes${id}`);
+  const { data } = await axiosApi.delete<Note>(`/notes/${id}`);
   return data;
 };

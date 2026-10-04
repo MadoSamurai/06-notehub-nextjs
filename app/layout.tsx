@@ -4,6 +4,7 @@ import "./globals.css";
 import css from "./page.module.css";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
+import TanStackProvider from "@/components/TanStackProvider/TanStackProvider";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -22,13 +23,15 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body>
-        <Header />
-        <main>
-          <div className={css.container}>{children}</div>
-        </main>
-        <Footer />
-      </body>
+      <TanStackProvider>
+        <body>
+          <Header />
+          <main>
+            <div className={css.container}>{children}</div>
+          </main>
+          <Footer />
+        </body>
+      </TanStackProvider>
     </html>
   );
 }
